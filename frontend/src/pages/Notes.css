@@ -1,0 +1,81 @@
+.wrapper{
+  margin: 50px;
+  background-color: blue;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 265px);
+  justify-content: center;
+  gap: 25px;
+}
+
+.wrapper li{
+  height:250px;
+  list-style: none;
+  background-color: honeydew;
+  border-radius: 5px;
+  padding: 15px 20px 20px;
+}
+
+.add-box, .add-icon, .bottom-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-box{
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.add-box .add-icon{
+  height: 78px;
+  width: 78px;
+  border-radius: 50%;
+  justify-content: center;
+  color: orange;
+  font-size: 40px;
+  border: 2px dashed crimson;
+}
+
+.add-box p{
+  color: green;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.wrapper .note{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.details p{
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.details span{
+  display: block;
+  margin-top: 5px;
+  color: red;
+  font-size: 16px;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.note .bottom-content{
+  padding-top: 10px;
+  border-top: 1px solid blue;
+}
+
+.bottom-content span{
+  color: violet;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 680px){
+  .wrapper{
+    margin: 15px;
+    grid-template-columns: repeat(auto-fill, 100%);
+  }
+}
