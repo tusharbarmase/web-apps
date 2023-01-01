@@ -7,7 +7,10 @@ const NoteForm = (form) => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState(null);
 
-  const handleClick = () => {
+  const handleClose = () => {
+    setTitle("");
+    setMessage("");
+    setError(null);
     document.querySelector(".popup-box").classList.remove("active");
   };
 
@@ -28,10 +31,7 @@ const NoteForm = (form) => {
       setError(json.error);
     }
     if (response.ok) {
-      setTitle("");
-      setMessage("");
-      setError(null);
-      handleClick();
+      handleClose();
       console.log("added new workout", json);
       dispatch({ type: "CREATE_NOTE", payload: json });
     }
@@ -42,7 +42,7 @@ const NoteForm = (form) => {
       <div className="content">
         <div className="header">
           <p>{form.heading}</p>
-          <span className="material-symbols-outlined" onClick={handleClick}>
+          <span className="material-symbols-outlined" onClick={handleClose}>
             close
           </span>
         </div>
