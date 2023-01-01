@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNotesContext } from "../hooks/useNotesContext";
 
 const NoteForm = (form) => {
+  const { dispatch } = useNotesContext();
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState(null);
@@ -31,6 +33,7 @@ const NoteForm = (form) => {
       setError(null);
       handleClick();
       console.log("added new workout", json);
+      dispatch({ type: "CREATE_NOTE", payload: json });
     }
   };
 
