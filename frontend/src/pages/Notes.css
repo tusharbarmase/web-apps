@@ -87,7 +87,15 @@
   
 }
 
-.error{
+input.error{
+  color: coral;
+}
+
+textarea.error{
+  color: green;
+}
+
+div.error{
   padding: 10px;
   background-color: gold;
   border: 1px solid red;

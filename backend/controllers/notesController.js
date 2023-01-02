@@ -24,6 +24,19 @@ const getNote = async (req, res) => {
 
 const createNote = async (req, res) => {
   const { title, message } = req.body;
+  let emptyFields = [];
+
+  if (!title) {
+    emptyFields.push("title");
+  }
+  if (!message) {
+    emptyFields.push("message");
+  }
+  if (emptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({ error: "Please fill in all the fields", emptyFields });
+  }
   try {
     const note = await notesSchema.create({ title, message });
     res.status(200).json(note);
@@ -49,21 +62,28 @@ const deleteNote = async (req, res) => {
 
 const updateNote = async (req, res) => {
   const { id } = req.params;
+  const { title, message } = req.body;
+  let emptyFields = [];
 
-  if (req.body.title && req.body.message){
-    try {
-      const note = await notesSchema.findOneAndUpdate(
-        { _id: id },
-        { ...req.body },
-        {new:true}
-      );
-      res.status(200).json(note);
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
+  if(!title){
+    emptyFields.push("title")
   }
-  else{
-    res.status(400).json({ error: 'Request body is empty' });
+  if(!message){
+    emptyFields.push("message")
+  }
+  if(emptyFields.length>0){
+    return res.status(400).json({error: "Please fill in all the fields", emptyFields})
+  }
+
+  try {
+    const note = await notesSchema.findOneAndUpdate(
+      { _id: id },
+      { ...req.body },
+      { new: true }
+    );
+    res.status(200).json(note);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 };
 
