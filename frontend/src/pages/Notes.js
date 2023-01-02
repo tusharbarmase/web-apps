@@ -8,11 +8,12 @@ const Notes = () => {
   const { notes, dispatch } = useNotesContext();
   const [heading, setHeading] = useState("heading");
   const [button_text, SetButton] = useState("button-text");
+  const [single_note, SetSingleNote] = useState({title: "", message: ""});
 
   const handleAdd = () => {
-    document.querySelector(".popup-box").classList.add("active");
     setHeading("Add a new Note");
     SetButton("Add Note");
+    document.querySelector(".popup-box").classList.add("active");
   };
 
   useEffect(() => {
@@ -30,14 +31,14 @@ const Notes = () => {
 
   return (
     <>
-      <NoteForm heading={heading} button_text={button_text} />
+      <NoteForm single_note={single_note} SetSingleNote={SetSingleNote} heading={heading} button_text={button_text} />
       <div className="wrapper">
         <li className="add-box" onClick={handleAdd}>
           <span className="material-symbols-outlined">add</span>
           <p>Add a new Note</p>
         </li>
         {notes &&
-          notes.map((note) => <NoteDetails key={note._id} note={note} setHeading={setHeading} SetButton={SetButton}/>)}
+          notes.map((note) => <NoteDetails key={note._id} note={note} setHeading={setHeading} SetButton={SetButton} SetSingleNote={SetSingleNote}/>)}
       </div>
     </>
   );

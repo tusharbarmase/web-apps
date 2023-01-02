@@ -50,14 +50,20 @@ const deleteNote = async (req, res) => {
 const updateNote = async (req, res) => {
   const { id } = req.params;
 
-  try {
-    const note = await notesSchema.findOneAndUpdate(
-      { _id: id },
-      { ...req.body }
-    );
-    res.status(200).json(note);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
+  if (req.body.title && req.body.message){
+    try {
+      const note = await notesSchema.findOneAndUpdate(
+        { _id: id },
+        { ...req.body },
+        {new:true}
+      );
+      res.status(200).json(note);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+  else{
+    res.status(400).json({ error: 'Request body is empty' });
   }
 };
 
