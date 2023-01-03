@@ -13,6 +13,7 @@ const Notes = () => {
   const handleAdd = () => {
     setHeading("Add a new Note");
     SetButton("Add Note");
+    document.body.style.overflow = "hidden"
     document.querySelector(".popup-box").classList.add("active");
   };
 

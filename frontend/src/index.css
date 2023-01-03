@@ -7,8 +7,19 @@
   font-family: 'Poppins', sans-serif;
 }
 
+:root {
+  --green: #1aac83;
+  --error: #e7195a;
+  --notes: #fffff2;
+  --white: #ffffff;
+  --dark: #36393F;
+  --light-black: #888888;
+  --light-red: #ffe4e4;
+  --blue: #2581d6;
+}
+
 body{
-  background-color: aqua;
+  background-color: var(--dark);
   max-width: 1800px;
   margin: auto;
 }

@@ -11,6 +11,7 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
     SetSingleNote({ title: "", message: "" });
     setEmptyFields([]);
     setError(null);
+    document.body.style.overflow = "auto"
     document.querySelector(".popup-box").classList.remove("active");
   };
 
@@ -18,7 +19,6 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    console.log(single_note);
     const note = { title: single_note.title, message: single_note.message };
     const response = await fetch("/api/notes", {
       method: "POST",
@@ -35,7 +35,6 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
     }
     if (response.ok) {
       handleClose();
-      console.log("added new note", json);
       dispatch({ type: "CREATE_NOTE", payload: json });
     }
     setIsSubmitting(false);
@@ -45,7 +44,6 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    console.log(single_note);
     const note = { title: single_note.title, message: single_note.message };
     const response = await fetch("/api/notes/" + single_note._id, {
       method: "PATCH",
@@ -62,7 +60,6 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
     }
     if (response.ok) {
       handleClose();
-      console.log("updated note");
       dispatch({ type: "UPDATE_NOTE", payload: json });
     }
 
@@ -90,7 +87,7 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
               onChange={(e) =>
                 SetSingleNote({ ...single_note, title: e.target.value })
               }
-              className = {emptyFields.includes("title")? "error": ""}
+              className = {emptyFields.includes("title")? "inputs error": "inputs"}
             />
           </div>
           <div className="row description">
@@ -100,7 +97,7 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
               onChange={(e) =>
                 SetSingleNote({ ...single_note, message: e.target.value })
               }
-              className = {emptyFields.includes("message")? "error": ""}
+              className = {emptyFields.includes("message")? "inputs error": "inputs"}
             ></textarea>
           </div>
           <button disabled={isSubmitting}>{button_text}</button>

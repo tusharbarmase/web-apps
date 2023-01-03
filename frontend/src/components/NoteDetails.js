@@ -13,6 +13,7 @@ const NoteDetails = ({ SetButton, SetSingleNote, setHeading, note }) => {
     setHeading("Update a note");
     SetButton("Update Note");
     SetSingleNote(note);
+    document.body.style.overflow = "hidden"
     document.querySelector(".popup-box").classList.add("active");
   };
 

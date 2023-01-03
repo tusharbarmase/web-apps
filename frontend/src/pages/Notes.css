@@ -7,7 +7,7 @@
   height: 100%;
   width: 100%;
   z-index: 2;
-  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: brightness(10%);
 }
 
 .content{
@@ -19,7 +19,9 @@
   width: 100%;
   border-radius: 5px;
   transform: translate(-50%, -50%);
-  background-color: fuchsia;
+  background-color: var(--dark);
+  border: 2px solid var(--light-black);
+  color: var(--white);
 }
 
 .popup-box{
@@ -35,7 +37,7 @@
 
 .content .header{
   padding: 15px 25px;
-  border-bottom: 1px solid yellow;
+  border-bottom: 1px solid var(--green);
 }
 
 .header p{
@@ -62,13 +64,15 @@
   margin-bottom: 6px;
 }
 
-.content form input, .content form textarea{
+.inputs{
   width: 100%;
   height: 50px;
   font-size: 17px;
   padding: 15px;
+  color: var(--white);
+  background-color: var(--dark);
   border-radius: 4px;
-  border: 1px solid red;
+  border: 1px solid var(--green)
 }
 
 .content form textarea{
@@ -79,26 +83,22 @@
 .content form button{
   width: 100%;
   height: 50px;
+  color: var(--white);
   border: none;
   font-size: 17px;
   border-radius: 4px;
   cursor: pointer;
-  background-color: blue;
+  background-color: var(--green);
   
 }
 
-input.error{
-  color: coral;
-}
-
-textarea.error{
-  color: green;
+.inputs.error{
+  border: 1px solid var(--error)
 }
 
 div.error{
   padding: 10px;
-  background-color: gold;
-  border: 1px solid red;
+  background-color: var(--error);
   border-radius: 4px;
   margin-top: 20px;
 }
@@ -107,7 +107,6 @@ div.error{
 
 .wrapper{
   margin: 50px;
-  background-color: blue;
   display: grid;
   grid-template-columns: repeat(auto-fill, 265px);
   justify-content: center;
@@ -117,7 +116,7 @@ div.error{
 .wrapper li{
   height:250px;
   list-style: none;
-  background-color: honeydew;
+  background-color: var(--notes);
   border-radius: 5px;
   padding: 15px 20px 20px;
 }
@@ -139,13 +138,13 @@ div.error{
   width: 78px;
   border-radius: 50%;
   justify-content: center;
-  color: orange;
+  color: var(--blue);
   font-size: 40px;
-  border: 2px dashed crimson;
+  border: 2px dashed var(--blue);
 }
 
 .add-box p{
-  color: green;
+  color: var(--blue);
   font-weight: 500;
   margin-top: 20px;
 }
@@ -159,12 +158,12 @@ div.error{
 .details p{
   font-size: 22px;
   font-weight: 500;
+  color: var(--green);
 }
 
 .details span{
   display: block;
   margin-top: 5px;
-  color: red;
   font-size: 16px;
   max-height: 140px;
   overflow-y: auto;
@@ -172,7 +171,7 @@ div.error{
 
 .note .bottom-content{
   padding-top: 10px;
-  border-top: 1px solid blue;
+  border-top: 1px solid var(--light-black);
 }
 
 .bottom-content .icons{
@@ -180,12 +179,12 @@ div.error{
 }
 
 .bottom-content .date{
-  color: violet;
+  color: var(--light-black);
   font-size: 14px;
 }
 
 .icons span{ 
-  color: red;
+  color: var(--error);
   font-size: 25px;
   cursor: pointer;
 }
@@ -195,5 +194,11 @@ div.error{
   .wrapper{
     margin: 15px;
     grid-template-columns: repeat(auto-fill, 100%);
+  }
+}
+
+@media screen and (max-width: 310px){
+  .details p{
+    overflow: scroll;
   }
 }
