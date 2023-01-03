@@ -26,6 +26,11 @@ const createNote = async (req, res) => {
   const { title, message } = req.body;
   let emptyFields = [];
 
+  if(title.length > 18){
+    return res
+      .status(400)
+      .json({ error: "Please keep title short", emptyFields });
+  }
   if (!title) {
     emptyFields.push("title");
   }
@@ -65,14 +70,21 @@ const updateNote = async (req, res) => {
   const { title, message } = req.body;
   let emptyFields = [];
 
-  if(!title){
-    emptyFields.push("title")
+  if(title.length > 18){
+    return res
+      .status(400)
+      .json({ error: "Please keep title short", emptyFields });
   }
-  if(!message){
-    emptyFields.push("message")
+  if (!title) {
+    emptyFields.push("title");
   }
-  if(emptyFields.length>0){
-    return res.status(400).json({error: "Please fill in all the fields", emptyFields})
+  if (!message) {
+    emptyFields.push("message");
+  }
+  if (emptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({ error: "Please fill in all the fields", emptyFields });
   }
 
   try {

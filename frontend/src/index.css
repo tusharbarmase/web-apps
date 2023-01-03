@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 :root {
@@ -12,13 +12,15 @@
   --error: #e7195a;
   --notes: #fffff2;
   --white: #ffffff;
-  --dark: #36393F;
+  --dark: #36393f;
   --light-black: #888888;
+  --dark-black: #4e4e4e;
   --light-red: #ffe4e4;
   --blue: #2581d6;
+  --light-blue: #5badfa;
 }
 
-body{
+body {
   background-color: var(--dark);
   max-width: 1800px;
   margin: auto;

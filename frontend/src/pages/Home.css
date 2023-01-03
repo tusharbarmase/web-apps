@@ -1,0 +1,17 @@
+.home-container{
+    display: flex;
+    padding: 30px;
+    justify-content: center;
+}
+
+.home{
+    border: 6px solid red;
+    border-radius: 15px;
+    color: var(--white);
+    max-width: 1600px;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

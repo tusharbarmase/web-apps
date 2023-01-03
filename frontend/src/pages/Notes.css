@@ -192,7 +192,6 @@ div.error{
 @media screen and (max-width: 680px){
 
   .wrapper{
-    margin: 15px;
     grid-template-columns: repeat(auto-fill, 100%);
   }
 }
