@@ -71,9 +71,7 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
       <div className="content">
         <div className="header">
           <p>{heading}</p>
-          <span className="material-symbols-outlined" onClick={handleClose}>
-            close
-          </span>
+          <i class="fa-solid fa-xmark" onClick={handleClose}></i>
         </div>
         <form
           className="create"

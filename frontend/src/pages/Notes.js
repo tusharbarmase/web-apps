@@ -8,12 +8,12 @@ const Notes = () => {
   const { notes, dispatch } = useNotesContext();
   const [heading, setHeading] = useState("heading");
   const [button_text, SetButton] = useState("button-text");
-  const [single_note, SetSingleNote] = useState({title: "", message: ""});
+  const [single_note, SetSingleNote] = useState({ title: "", message: "" });
 
   const handleAdd = () => {
     setHeading("Add a new Note");
     SetButton("Add Note");
-    document.body.style.overflow = "hidden"
+    document.body.style.overflow = "hidden";
     document.querySelector(".popup-box").classList.add("active");
   };
 
@@ -31,17 +31,30 @@ const Notes = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <NoteForm single_note={single_note} SetSingleNote={SetSingleNote} heading={heading} button_text={button_text} />
-      <div className="wrapper">
+    <div className="notes-container">
+      <NoteForm
+        single_note={single_note}
+        SetSingleNote={SetSingleNote}
+        heading={heading}
+        button_text={button_text}
+      />
+      <div className="notes">
         <li className="add-box" onClick={handleAdd}>
-          <span className="material-symbols-outlined">add</span>
+          <i class="fa-solid fa-plus"></i>
           <p>Add a new Note</p>
         </li>
         {notes &&
-          notes.map((note) => <NoteDetails key={note._id} note={note} setHeading={setHeading} SetButton={SetButton} SetSingleNote={SetSingleNote}/>)}
+          notes.map((note) => (
+            <NoteDetails
+              key={note._id}
+              note={note}
+              setHeading={setHeading}
+              SetButton={SetButton}
+              SetSingleNote={SetSingleNote}
+            />
+          ))}
       </div>
-    </>
+    </div>
   );
 };
 

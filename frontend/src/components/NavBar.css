@@ -1,7 +1,6 @@
 .navbar-container{
     display: flex;
     justify-content: center;
-    
 }
 
 .navbar{
@@ -18,8 +17,10 @@
 }
 
 .navbar-logo{
+    text-decoration: none;
     color: var(--white);
     font-size: 2rem;
+    font-weight: 800;
     cursor: pointer;
 }
 
@@ -37,3 +38,13 @@ button{
 button:hover{
     background-color: var(--light-blue);
 }
+
+@media screen and (max-width: 680px) {
+    .navbar-logo{
+        font-size: 1.5rem;
+    }
+
+    button{
+        padding: 0.5rem 0.5rem;
+    }
+  }

@@ -1,6 +1,6 @@
 /* popup box */
 
-.popup-box{
+.popup-box {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,11 +8,12 @@
   width: 100%;
   z-index: 2;
   backdrop-filter: brightness(10%);
+  overflow-y: scroll;
 }
 
-.content{
+.content {
   position: absolute;
-  top: 50%;
+  top: 370px;
   left: 50%;
   z-index: 3;
   max-width: 400px;
@@ -24,47 +25,47 @@
   color: var(--white);
 }
 
-.popup-box{
+.popup-box {
   opacity: 0;
   pointer-events: none;
   transition: all 0.25s ease;
 }
 
-.popup-box.active{
+.popup-box.active {
   opacity: 1;
   pointer-events: auto;
 }
 
-.content .header{
+.content .header {
   padding: 15px 25px;
   border-bottom: 1px solid var(--green);
 }
 
-.header p{
+.header p {
   font-size: 20px;
   font-weight: 500;
 }
 
-.header span{
+.header i {
   font-size: 23px;
   cursor: pointer;
 }
 
-.content form{
+.content form {
   margin: 15px 25px 35px;
 }
 
-.content form .row{
+.content form .row {
   margin-bottom: 20px;
 }
 
-.content form label{
+.content form label {
   display: block;
   font-size: 18px;
   margin-bottom: 6px;
 }
 
-.inputs{
+.inputs {
   width: 100%;
   height: 50px;
   font-size: 17px;
@@ -72,15 +73,15 @@
   color: var(--white);
   background-color: var(--dark);
   border-radius: 4px;
-  border: 1px solid var(--green)
+  border: 1px solid var(--green);
 }
 
-.content form textarea{
+.content form textarea {
   height: 150px;
   resize: none;
 }
 
-.content form button{
+.content form button {
   width: 100%;
   height: 50px;
   color: var(--white);
@@ -89,14 +90,13 @@
   border-radius: 4px;
   cursor: pointer;
   background-color: var(--green);
-  
 }
 
-.inputs.error{
-  border: 1px solid var(--error)
+.inputs.error {
+  border: 1px solid var(--error);
 }
 
-div.error{
+div.error {
   padding: 10px;
   background-color: var(--error);
   border-radius: 4px;
@@ -104,64 +104,75 @@ div.error{
 }
 
 /* notes grid */
+.notes-container {
+  display: flex;
+  padding: 30px 0;
+  justify-content: center;
+}
 
-.wrapper{
-  margin: 50px;
+.notes {
+  max-width: 1700px;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, 265px);
   justify-content: center;
   gap: 25px;
+  padding: 30px 0;
 }
 
-.wrapper li{
-  height:250px;
+.notes li {
+  height: 250px;
   list-style: none;
   background-color: var(--notes);
   border-radius: 5px;
   padding: 15px 20px 20px;
 }
 
-.header, .add-box, .add-box span, .bottom-content, .icons{
+.header,
+.add-box,
+.add-box i,
+.bottom-content,
+.icons {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.add-box{
+.add-box {
   flex-direction: column;
   justify-content: center;
   cursor: pointer;
 }
 
-.add-box span{
+.add-box i {
   height: 78px;
   width: 78px;
   border-radius: 50%;
   justify-content: center;
   color: var(--blue);
-  font-size: 40px;
+  font-size: 35px;
   border: 2px dashed var(--blue);
 }
 
-.add-box p{
+.add-box p {
   color: var(--blue);
   font-weight: 500;
   margin-top: 20px;
 }
 
-.wrapper .note{
+.notes .note {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.details p{
+.details p {
   font-size: 22px;
   font-weight: 500;
   color: var(--green);
 }
 
-.details span{
+.details span {
   display: block;
   margin-top: 5px;
   font-size: 16px;
@@ -169,35 +180,30 @@ div.error{
   overflow-y: auto;
 }
 
-.note .bottom-content{
+.note .bottom-content {
   padding-top: 10px;
   border-top: 1px solid var(--light-black);
 }
 
-.bottom-content .icons{
+.bottom-content .icons {
   width: 55px;
 }
 
-.bottom-content .date{
+.bottom-content .date {
   color: var(--light-black);
   font-size: 14px;
 }
 
-.icons span{ 
+.icons i {
   color: var(--error);
-  font-size: 25px;
+  font-size: 20px;
   cursor: pointer;
 }
 
-@media screen and (max-width: 680px){
-
-  .wrapper{
+@media screen and (max-width: 680px) {
+  .notes {
     grid-template-columns: repeat(auto-fill, 100%);
+    padding: 20px;
   }
 }
 
-@media screen and (max-width: 310px){
-  .details p{
-    overflow: scroll;
-  }
-}

@@ -5,15 +5,14 @@ import { useNotesContext } from "../hooks/useNotesContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const NoteDetails = ({ SetButton, SetSingleNote, setHeading, note }) => {
-
-  const { dispatch } = useNotesContext()
+  const { dispatch } = useNotesContext();
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleEdit = () => {
     setHeading("Update a note");
     SetButton("Update Note");
     SetSingleNote(note);
-    document.body.style.overflow = "hidden"
+    document.body.style.overflow = "hidden";
     document.querySelector(".popup-box").classList.add("active");
   };
 
@@ -22,13 +21,13 @@ const NoteDetails = ({ SetButton, SetSingleNote, setHeading, note }) => {
 
     setIsDeleting(true);
     const response = await fetch("/api/notes/" + note._id, {
-      method: "DELETE"
-    })
+      method: "DELETE",
+    });
 
-    const json = await response.json()
+    const json = await response.json();
 
-    if(response.ok){
-      dispatch({type: "DELETE_NOTE", payload: json})
+    if (response.ok) {
+      dispatch({ type: "DELETE_NOTE", payload: json });
     }
     setIsDeleting(false);
   };
@@ -44,8 +43,8 @@ const NoteDetails = ({ SetButton, SetSingleNote, setHeading, note }) => {
           {formatDistanceToNow(new Date(note.createdAt), { addSuffix: true })}
         </span>
         <div className="icons">
-          <span className="material-symbols-outlined" onClick={handleEdit}>edit</span>
-          <span className="material-symbols-outlined" onClick={handleDelete} disabled={true}>delete</span>
+          <i class="fa fa-pen" onClick={handleEdit}></i>
+          <i class="fa fa-trash" onClick={handleDelete}></i>
         </div>
       </div>
     </li>
