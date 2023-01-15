@@ -1,6 +1,6 @@
 import React from "react";
 import { AppData } from "../components/AppData";
-import "./Home.css";
+import "../styles/Home.css";
 import { Link } from "react-router-dom";
 
 const Home = () => {

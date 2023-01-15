@@ -1,0 +1,143 @@
+form {
+  margin: 15px 25px 35px;
+}
+
+form .form-row {
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+form button {
+  width: 100%;
+  height: 50px;
+  color: var(--white);
+  border: none;
+  font-size: 17px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: var(--green);
+}
+
+.form-header p {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.form-header i {
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.inputs {
+  width: 100%;
+  height: 50px;
+  font-size: 17px;
+  padding: 15px;
+  color: var(--white);
+  background-color: var(--dark);
+  border-radius: 4px;
+  border: 1px solid var(--green);
+}
+
+.inputs.error {
+  border: 1px solid var(--error);
+}
+
+div.error {
+  padding: 10px;
+  background-color: var(--error);
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+/* popup form */
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  backdrop-filter: brightness(10%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  overflow-y: scroll;
+}
+
+.popup-form {
+  position: absolute;
+  top: 370px;
+  left: 50%;
+  z-index: 3;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
+  background-color: var(--dark);
+  border: 2px solid var(--light-black);
+  color: var(--white);
+}
+
+.popup-container.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup-form .form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 25px;
+  border-bottom: 1px solid var(--green);
+}
+
+.popup-form textarea {
+  height: 150px;
+  resize: none;
+}
+
+/*login & signup*/
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  padding: 3.5% 0;
+}
+
+.auth-form {
+  width: 420px;
+  border-radius: 5px;
+  background-color: var(--dark);
+  border: 2px solid var(--light-black);
+  color: var(--white);
+}
+
+.auth-form .form-header {
+  text-align: center;
+  padding: 15px 25px;
+  border-bottom: 1px solid var(--green);
+}
+
+.auth-type{
+  color: var(--green);
+  text-decoration: none;
+  padding-left: 5px;
+}
+
+@media screen and (max-width: 450px) {
+  .auth-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+  }
+}

@@ -12,7 +12,7 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
     setEmptyFields([]);
     setError(null);
     document.body.style.overflow = "auto"
-    document.querySelector(".popup-box").classList.remove("active");
+    document.querySelector(".popup-container").classList.remove("active");
   };
 
   const handlePost = async (e) => {
@@ -67,17 +67,16 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
   };
 
   return (
-    <div className="popup-box">
-      <div className="content">
-        <div className="header">
+    <div className="popup-container">
+      <div className="popup-form">
+        <div className="form-header">
           <p>{heading}</p>
           <i class="fa-solid fa-xmark" onClick={handleClose}></i>
         </div>
         <form
-          className="create"
           onSubmit={button_text === "Add Note" ? handlePost : handlePatch}
         >
-          <div className="row title">
+          <div className="form-row">
             <label>Title</label>
             <input
               type="text"
@@ -88,7 +87,7 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
               className = {emptyFields.includes("title")? "inputs error": "inputs"}
             />
           </div>
-          <div className="row description">
+          <div className="form-row">
             <label>Description</label>
             <textarea
               value={single_note.message}

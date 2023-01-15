@@ -16,35 +16,24 @@
     z-index: 5;
 }
 
-.navbar-logo{
+.brand-logo{
     text-decoration: none;
-    color: var(--white);
+    color: var(--orange);
     font-size: 2rem;
     font-weight: 800;
     cursor: pointer;
 }
 
-button{
+.auth-button{
+    color: #fff;
+    text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 0.3rem;
     font-size: 1rem;
     font-weight: 600;
-    border: none;
-    cursor: pointer;
     background-color: var(--blue);
-    color: #fff;
 }
 
 button:hover{
     background-color: var(--light-blue);
 }
-
-@media screen and (max-width: 680px) {
-    .navbar-logo{
-        font-size: 1.5rem;
-    }
-
-    button{
-        padding: 0.5rem 0.5rem;
-    }
-  }

@@ -1,0 +1,101 @@
+.notes-container {
+  display: flex;
+  padding: 30px 0;
+  justify-content: center;
+}
+
+.notes {
+  max-width: 1700px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 265px);
+  justify-content: center;
+  gap: 25px;
+  padding: 30px 0;
+}
+
+.notes li {
+  height: 250px;
+  list-style: none;
+  background-color: var(--notes);
+  border-radius: 5px;
+  padding: 15px 20px 20px;
+}
+
+.add-box,
+.add-box i,
+.bottom-content,
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-box {
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.add-box i {
+  height: 78px;
+  width: 78px;
+  border-radius: 50%;
+  justify-content: center;
+  color: var(--blue);
+  font-size: 35px;
+  border: 2px dashed var(--blue);
+}
+
+.add-box p {
+  color: var(--blue);
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.notes .note {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.details p {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--green);
+}
+
+.details span {
+  display: block;
+  margin-top: 5px;
+  font-size: 16px;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.note .bottom-content {
+  padding-top: 10px;
+  border-top: 1px solid var(--light-black);
+}
+
+.bottom-content .icons {
+  width: 55px;
+}
+
+.bottom-content .date {
+  color: var(--light-black);
+  font-size: 14px;
+}
+
+.icons i {
+  color: var(--error);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 680px) {
+  .notes {
+    grid-template-columns: repeat(auto-fill, 100%);
+    padding: 20px;
+  }
+}

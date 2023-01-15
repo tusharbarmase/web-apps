@@ -13,7 +13,7 @@ const NoteDetails = ({ SetButton, SetSingleNote, setHeading, note }) => {
     SetButton("Update Note");
     SetSingleNote(note);
     document.body.style.overflow = "hidden";
-    document.querySelector(".popup-box").classList.add("active");
+    document.querySelector(".popup-container").classList.add("active");
   };
 
   const handleDelete = async () => {

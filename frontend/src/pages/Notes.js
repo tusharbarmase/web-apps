@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NoteDetails from "../components/NoteDetails";
 import NoteForm from "../components/NoteForm";
-import "./Notes.css";
+import "../styles/Notes.css";
 import { useNotesContext } from "../hooks/useNotesContext";
 
 const Notes = () => {
@@ -14,7 +14,7 @@ const Notes = () => {
     setHeading("Add a new Note");
     SetButton("Add Note");
     document.body.style.overflow = "hidden";
-    document.querySelector(".popup-box").classList.add("active");
+    document.querySelector(".popup-container").classList.add("active");
   };
 
   useEffect(() => {
