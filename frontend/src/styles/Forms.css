@@ -45,12 +45,12 @@ form button {
 }
 
 .inputs.error {
-  border: 1px solid var(--error);
+  border: 1px solid var(--red);
 }
 
 div.error {
   padding: 10px;
-  background-color: var(--error);
+  background-color: var(--red);
   border-radius: 4px;
   margin-top: 20px;
 }

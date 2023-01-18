@@ -71,7 +71,7 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
       <div className="popup-form">
         <div className="form-header">
           <p>{heading}</p>
-          <i class="fa-solid fa-xmark" onClick={handleClose}></i>
+          <i className="fa-solid fa-xmark" onClick={handleClose}></i>
         </div>
         <form
           onSubmit={button_text === "Add Note" ? handlePost : handlePatch}

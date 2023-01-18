@@ -5,6 +5,16 @@ export const AppData = [
         url: "/notes",
     },
     {
+        icon: "fa-solid fa-calculator",
+        title: "calculator",
+        url: "/calculator",
+    },
+    {
+        icon: "fa-solid fa-comments",
+        title: "chatroom",
+        url: "/chatroom",
+    },
+    {
         icon: "fa-solid fa-circle-info",
         title: "About",
         url: "/about",

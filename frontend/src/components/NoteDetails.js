@@ -43,8 +43,8 @@ const NoteDetails = ({ SetButton, SetSingleNote, setHeading, note }) => {
           {formatDistanceToNow(new Date(note.createdAt), { addSuffix: true })}
         </span>
         <div className="icons">
-          <i class="fa fa-pen" onClick={handleEdit}></i>
-          <i class="fa fa-trash" onClick={handleDelete}></i>
+          <i className="fa fa-pen" onClick={handleEdit}></i>
+          <i className="fa fa-trash" onClick={handleDelete}></i>
         </div>
       </div>
     </li>
