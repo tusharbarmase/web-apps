@@ -1,40 +1,23 @@
 .text-container {
-  display: flex;
-  justify-content: center;
-  padding: 30px 0;
-}
-
-.text {
-  max-width: 1700px;
-  width: 100%;
-  border-radius: 10px;
-  padding: 20px;
+  padding: 50px 20px 0 20px;
   text-align: center;
 }
 
-.text p {
+.text-container p {
   font-size: 2rem;
   font-weight: 600;
   color: var(--white);
 }
 
-.webapps-container {
-  display: flex;
-  padding-bottom: 30px;
-  justify-content: center;
-}
-
-.webapp {
-  max-width: 1700px;
-  width: 100%;
+.webapps {
   display: grid;
   grid-template-columns: repeat(auto-fill, 265px);
   justify-content: center;
   gap: 25px;
-  padding: 30px 0;
+  padding: 50px;
 }
 
-.webapp a {
+.webapps a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -47,18 +30,18 @@
   cursor: pointer;
 }
 
-.webapp i {
+.webapps i {
   font-size: 75px;
   color: var(--green);
 }
 
-.webapp p {
+.webapps p {
   font-size: 40px;
   color: var(--light-black);
 }
 
 @media screen and (max-width: 680px) {
-  .webapp {
+  .webapps {
     grid-template-columns: repeat(auto-fill, 100%);
     padding: 20px;
   }

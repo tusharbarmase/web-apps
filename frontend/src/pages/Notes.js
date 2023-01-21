@@ -31,14 +31,14 @@ const Notes = () => {
   }, [dispatch]);
 
   return (
-    <div className="notes-container">
+    <>
       <NoteForm
         single_note={single_note}
         SetSingleNote={SetSingleNote}
         heading={heading}
         button_text={button_text}
       />
-      <div className="notes">
+      <div className="notes-container">
         <li className="add-box" onClick={handleAdd}>
           <i className="fa-solid fa-plus"></i>
           <p>Add a new Note</p>
@@ -54,7 +54,7 @@ const Notes = () => {
             />
           ))}
       </div>
-    </div>
+    </>
   );
 };
 
