@@ -1,7 +1,7 @@
 export const AppData = [
     {
         icon: "fa-solid fa-sticky-note",
-        title: "notes app",
+        title: "notes",
         url: "/notes",
     },
     {
@@ -13,6 +13,11 @@ export const AppData = [
         icon: "fa-solid fa-comments",
         title: "chatroom",
         url: "/chatroom",
+    },
+    {
+        icon: "fa-solid fa-music",
+        title: "Music",
+        url: "/music",
     },
     {
         icon: "fa-solid fa-circle-info",

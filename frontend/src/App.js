@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Notes from "./pages/Notes";
@@ -9,20 +9,41 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Calculator from "./pages/Calculator";
 import Chatroom from "./pages/Chatroom";
+import Account from "./pages/Account";
+import { useAuthContext } from "./hooks/useAuthContext";
+import Music from "./pages/Music";
 
 function App() {
+  const { user } = useAuthContext();
   const { pathname } = useLocation();
   return (
     <div className="App">
       {pathname !== "/login" && pathname !== "/signup" ? <NavBar /> : null}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/notes" element={<Notes />} />
-        <Route path="/calculator" element={<Calculator />} />
-        <Route path="/chatroom" element={<Chatroom />} />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/calculator" element={<Calculator />} />
+        <Route path="/music" element={<Music />} />
+        <Route
+          path="/notes"
+          element={user ? <Notes /> : <Navigate to="/login" replace/>}
+        />
+        <Route
+          path="/chatroom"
+          element={user ? <Chatroom /> : <Navigate to="/login" replace/>}
+        />
+        <Route
+          path="/account"
+          element={user ? <Account /> : <Navigate to="/login" replace/>}
+        />
+        <Route
+          path="/login"
+          element={!user ? <Login /> : <Navigate to="/"/>}
+        />
+        <Route
+          path="/signup"
+          element={!user ? <Signup /> : <Navigate to="/"/>}
+        />
       </Routes>
       {pathname !== "/login" && pathname !== "/signup" ? <Footer /> : null}
     </div>

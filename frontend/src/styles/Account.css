@@ -1,0 +1,14 @@
+.account-container {
+  padding: 50px;
+  color: var(--white);
+}
+
+.logout-button {
+  border: none;
+  padding: 10px;
+  font-size: 17px;
+  color: var(--white);
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: var(--green);
+}
