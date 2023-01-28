@@ -1,0 +1,91 @@
+.player-container {
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.music-player {
+  width: 400px;
+  padding: 1.3rem;
+  background-color: var(--dark-black);
+  border: 2px solid var(--white);
+  border-radius: 1rem;
+}
+
+.player-header {
+  text-align: center;
+  font-size: 18px;
+  color: #b3b33e;
+  animation: animate 1s infinite linear;
+}
+
+@keyframes animate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  50% {
+    filter: hue-rotate(180deg);
+  }
+
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.player-image {
+  height: 256px;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 25px;
+  border-radius: 15px;
+}
+
+.player-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.player-song {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.song-name {
+  font-size: 21px;
+}
+
+.song-artist {
+  opacity: 0.8;
+  font-size: 18px;
+}
+
+.progress-bar {
+  width: 100%;
+}
+
+.progress-timer {
+  margin-top: 2px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.player-controls {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.player-controls i {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.play-pause{
+  background-color: var(--green);
+  padding: 20px;
+  border-radius: 50%;
+}
