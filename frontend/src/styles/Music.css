@@ -7,6 +7,8 @@
 
 .music-player {
   width: 400px;
+  position: relative;
+  overflow: hidden;
   padding: 1.3rem;
   background-color: var(--dark-black);
   border: 2px solid var(--white);
@@ -17,10 +19,10 @@
   text-align: center;
   font-size: 18px;
   color: #b3b33e;
-  animation: animate 1s infinite linear;
+  animation: header-animation 1s infinite linear;
 }
 
-@keyframes animate {
+@keyframes header-animation {
   0% {
     filter: hue-rotate(0deg);
   }
@@ -48,18 +50,10 @@
   object-fit: cover;
 }
 
-.player-song {
-  text-align: center;
-  margin: 20px 0;
-}
-
 .song-name {
+  text-align: center;
   font-size: 21px;
-}
-
-.song-artist {
-  opacity: 0.8;
-  font-size: 18px;
+  margin: 20px 0;
 }
 
 .progress-bar {
@@ -80,12 +74,101 @@
 }
 
 .player-controls i {
-  font-size: 28px;
+  font-size: 30px;
   cursor: pointer;
 }
 
-.play-pause{
-  background-color: var(--green);
-  padding: 20px;
+.song-list{
+  position: absolute;
+  left: 0;
+  bottom: -55%;
+  width: 100%;
+  background-color: var(--dark);
+  border-radius: 1rem;
+  padding: 15px 30px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: all 0.14s ease-in-out;
+}
+
+.song-list.show{
+  bottom: 0;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.list-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-header span{
+  font-size: 20px;
+  padding: 5px;
+}
+
+.list-header i{
+  font-size: 20px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.song-list ul{
+  margin: 10px 0;
+  max-height: 260px;
+  overflow: auto;
+}
+
+.song-list ul li{
+  list-style: none;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--green);
+  cursor: pointer;
+}
+
+.online-offline{
+  display: flex;
+  flex-direction: column;
+}
+
+.online-offline label{
+  margin-bottom: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--green);
+}
+
+#file-select{
+  display: none;
+}
+
+.button-container{
+  width: 60px;
+  height: 60px;
+  background: var(--green);
   border-radius: 50%;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.button-container.playing{
+  animation: animate 2s linear infinite;
+}
+
+@keyframes animate{
+  0%{
+    box-shadow: 0 0 0 0 rgba(0, 206, 209, 0.7);
+  }
+  40%{
+    box-shadow: 0 0 0 20px rgba(0, 206, 209, 0);
+  }
+  80%{
+    box-shadow: 0 0 0 20px rgba(0, 206, 209, 0);
+  }
+  100%{
+    box-shadow: 0 0 0 rgba(0, 206, 209, 0);
+  }
 }
