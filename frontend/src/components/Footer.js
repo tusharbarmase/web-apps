@@ -7,15 +7,18 @@ const Footer = () => {
     <footer className="footer">
       <p>&#169;2023-2024 tusharbarmase</p>
       <div className="socials">
-        <Link>
+        <a href="https://github.com/tusharbarmase" target="_blank">
           <i className="fa-brands fa-github fa-xl"></i>
-        </Link>
-        <Link>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/tushar-barmase-697153257"
+          target="_blank"
+        >
           <i className="fa-brands fa-linkedin fa-xl"></i>
-        </Link>
-        <Link>
+        </a>
+        <a href="mailto:tusharbarmase9630@gmail.com">
           <i className="fa-solid fa-envelope fa-xl"></i>
-        </Link>
+        </a>
       </div>
     </footer>
   );

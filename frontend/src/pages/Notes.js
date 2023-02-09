@@ -3,6 +3,7 @@ import NoteDetails from "../components/NoteDetails";
 import NoteForm from "../components/NoteForm";
 import "../styles/Notes.css";
 import { useNotesContext } from "../hooks/useNotesContext";
+import axios from "axios"
 
 const Notes = () => {
   const { notes, dispatch } = useNotesContext();
@@ -18,16 +19,13 @@ const Notes = () => {
   };
 
   useEffect(() => {
-    const fetchNotes = async () => {
-      const response = await fetch("/api/notes");
-      const json = await response.json();
-
-      if (response.ok) {
-        dispatch({ type: "SET_NOTES", payload: json });
-      }
-    };
-
-    fetchNotes();
+    axios.get("https://webapp-server.onrender.com/api/notes")
+    .then(response=>{
+      dispatch({ type: "SET_NOTES", payload: response.data });
+    })
+    .catch(error=>{
+      console.log(error)
+    })
   }, [dispatch]);
 
   return (

@@ -15,6 +15,7 @@ import Music from "./pages/Music";
 
 function App() {
   const { user } = useAuthContext();
+  const userInfo = JSON.parse(localStorage.getItem("user"));
   const { pathname } = useLocation();
   return (
     <div className="App">
@@ -26,23 +27,23 @@ function App() {
         <Route path="/music" element={<Music />} />
         <Route
           path="/notes"
-          element={user ? <Notes /> : <Navigate to="/login" replace/>}
+          element={userInfo ? <Notes /> : <Navigate to="/login" replace />}
         />
         <Route
           path="/chatroom"
-          element={user ? <Chatroom /> : <Navigate to="/login" replace/>}
+          element={userInfo ? <Chatroom /> : <Navigate to="/login" replace />}
         />
         <Route
           path="/account"
-          element={user ? <Account /> : <Navigate to="/login" replace/>}
+          element={userInfo ? <Account /> : <Navigate to="/login" replace />}
         />
         <Route
           path="/login"
-          element={!user ? <Login /> : <Navigate to="/"/>}
+          element={!user ? <Login /> : <Navigate to="/" />}
         />
         <Route
           path="/signup"
-          element={!user ? <Signup /> : <Navigate to="/"/>}
+          element={!user ? <Signup /> : <Navigate to="/" />}
         />
       </Routes>
       {pathname !== "/login" && pathname !== "/signup" ? <Footer /> : null}

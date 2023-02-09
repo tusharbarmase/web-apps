@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/Forms.css";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,27 +15,23 @@ const Login = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const response = await fetch("/api/user/login", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const json = await response.json();
-    if (!response.ok) {
-      setError(json.error);
-    }
-    if (response.ok) {
-      localStorage.setItem("user", JSON.stringify(json));
-      dispatch({ type: "LOGIN", payload: json });
-      setEmail("");
-      setPassword("");
-      setError("");
-    }
-
-    setIsSubmitting(false);
+    axios
+      .post("https://webapp-server.onrender.com/api/user/login", {
+        email,
+        password,
+      })
+      .then((response) => {
+        localStorage.setItem("user", JSON.stringify(response.data));
+        dispatch({ type: "LOGIN", payload: response.data });
+        setEmail("");
+        setPassword("");
+        setError("");
+        setIsSubmitting(false);
+      })
+      .catch((error) => {
+        setError(error.response.data.error);
+        setIsSubmitting(false);
+      });
   };
 
   return (

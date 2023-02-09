@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../styles/Music.css";
 
 const Music = () => {
@@ -22,6 +22,15 @@ const Music = () => {
       ]
     )
   );
+
+  useEffect(() => {
+    audioRef.current.onpause = () => {
+      setPlaying(false);
+    };
+    audioRef.current.onplay = () => {
+      setPlaying(true);
+    };
+  }, []);
 
   const handlePlayMode = () => {
     switch (playModeIcon) {
@@ -106,7 +115,7 @@ const Music = () => {
     setTimeout(() => {
       audioRef.current.play();
       setPlaying(true);
-    }, 100);
+    }, 10);
     toggleVisiblity();
   };
 
@@ -135,7 +144,7 @@ const Music = () => {
       setTimeout(() => {
         audioRef.current.play();
         setPlaying(true);
-      }, 100);
+      }, 10);
     }
   };
 
@@ -159,7 +168,7 @@ const Music = () => {
             remainingSongs[Math.floor(Math.random() * remainingSongs.length)];
           break;
         default:
-            selectedSong = files[0];
+          selectedSong = files[0];
           break;
       }
       setSongName(selectedSong.name);
@@ -178,7 +187,7 @@ const Music = () => {
       setTimeout(() => {
         audioRef.current.play();
         setPlaying(true);
-      }, 100);
+      }, 10);
     }
   };
 
@@ -217,6 +226,8 @@ const Music = () => {
             onChange={handleSeek}
             onMouseDown={handlePause}
             onMouseUp={handlePlay}
+            onTouchStart={handlePause}
+            onTouchEnd={handlePlay}
           />
           <div className="progress-timer">
             <span className="current-time">
@@ -280,13 +291,12 @@ const Music = () => {
           </ul>
           <input
             type="file"
-            webkitdirectory=""
-            directory=""
             id="file-select"
             onChange={handleSongList}
+            multiple
           />
           <audio
-            ref={songUrl ? audioRef : null}
+            ref={audioRef}
             src={songUrl}
             onTimeUpdate={updateProgress}
             onEnded={handleSongEnd}

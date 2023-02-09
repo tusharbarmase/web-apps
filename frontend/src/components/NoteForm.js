@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNotesContext } from "../hooks/useNotesContext";
+import axios from "axios";
 
 const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
   const { dispatch } = useNotesContext();
@@ -11,7 +12,7 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
     SetSingleNote({ title: "", message: "" });
     setEmptyFields([]);
     setError(null);
-    document.body.style.overflow = "auto"
+    document.body.style.overflow = "auto";
     document.querySelector(".popup-container").classList.remove("active");
   };
 
@@ -20,24 +21,18 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
     setIsSubmitting(true);
 
     const note = { title: single_note.title, message: single_note.message };
-    const response = await fetch("/api/notes", {
-      method: "POST",
-      body: JSON.stringify(note),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const json = await response.json();
-    if (!response.ok) {
-      setError(json.error);
-      setEmptyFields(json.emptyFields);
-    }
-    if (response.ok) {
-      handleClose();
-      dispatch({ type: "CREATE_NOTE", payload: json });
-    }
-    setIsSubmitting(false);
+    axios
+      .post("https://webapp-server.onrender.com/api/notes", note)
+      .then((response) => {
+        handleClose();
+        dispatch({ type: "CREATE_NOTE", payload: response.data });
+        setIsSubmitting(false);
+      })
+      .catch((error) => {
+        setError(error.response.data.error);
+        setEmptyFields(error.response.data.emptyFields);
+        setIsSubmitting(false);
+      });
   };
 
   const handlePatch = async (e) => {
@@ -45,25 +40,21 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
     setIsSubmitting(true);
 
     const note = { title: single_note.title, message: single_note.message };
-    const response = await fetch("/api/notes/" + single_note._id, {
-      method: "PATCH",
-      body: JSON.stringify(note),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const json = await response.json();
-
-    if (!response.ok) {
-      setError(json.error);
-      setEmptyFields(json.emptyFields);
-    }
-    if (response.ok) {
-      handleClose();
-      dispatch({ type: "UPDATE_NOTE", payload: json });
-    }
-
-    setIsSubmitting(false);
+    axios
+      .patch(
+        "https://webapp-server.onrender.com/api/notes/" + single_note._id,
+        note
+      )
+      .then((response) => {
+        handleClose();
+        dispatch({ type: "UPDATE_NOTE", payload: response.data });
+        setIsSubmitting(false);
+      })
+      .catch((error) => {
+        setError(error.response.data.error);
+        setEmptyFields(error.response.data.emptyFields);
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -73,9 +64,7 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
           <p>{heading}</p>
           <i className="fa-solid fa-xmark" onClick={handleClose}></i>
         </div>
-        <form
-          onSubmit={button_text === "Add Note" ? handlePost : handlePatch}
-        >
+        <form onSubmit={button_text === "Add Note" ? handlePost : handlePatch}>
           <div className="form-row">
             <label>Title</label>
             <input
@@ -84,7 +73,9 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
               onChange={(e) =>
                 SetSingleNote({ ...single_note, title: e.target.value })
               }
-              className = {emptyFields.includes("title")? "inputs error": "inputs"}
+              className={
+                emptyFields.includes("title") ? "inputs error" : "inputs"
+              }
             />
           </div>
           <div className="form-row">
@@ -94,7 +85,9 @@ const NoteForm = ({ single_note, SetSingleNote, heading, button_text }) => {
               onChange={(e) =>
                 SetSingleNote({ ...single_note, message: e.target.value })
               }
-              className = {emptyFields.includes("message")? "inputs error": "inputs"}
+              className={
+                emptyFields.includes("message") ? "inputs error" : "inputs"
+              }
             ></textarea>
           </div>
           <button disabled={isSubmitting}>{button_text}</button>

@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AppData } from "../components/AppData";
 import "../styles/Home.css";
 import { Link } from "react-router-dom";
+import axios from "axios"
 
 const Home = () => {
+
+  useEffect(() => {
+    axios
+      .get("https://webapp-server.onrender.com")
+      .then((response) => {
+        console.log(response.data.mssg)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <>
       <div className="text-container">

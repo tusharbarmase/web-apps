@@ -1,36 +1,51 @@
-.navbar{
-    background-color: var(--dark-black);
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    padding: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 5;
+.navbar {
+  background-color: var(--dark-black);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
 }
 
-.brand-logo{
-    text-decoration: none;
-    color: var(--orange);
-    font-size: 2rem;
-    font-weight: 800;
-    cursor: pointer;
+.brand-logo {
+  text-decoration: none;
+  color: var(--orange);
+  font-size: 2rem;
+  font-weight: 800;
+  cursor: pointer;
 }
 
-.auth-icon{
-    color: var(--white);
-    font-size: 30px;
+.auth-icon {
+  color: var(--white);
+  font-size: 30px;
 }
 
-.auth-button{
-    color: var(--white);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.3rem;
-    font-size: 1rem;
-    font-weight: 600;
-    background-color: var(--blue);
+.auth-button {
+  color: var(--white);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--blue);
 }
 
-button:hover{
-    background-color: var(--light-blue);
+button:hover {
+  background-color: var(--light-blue);
+}
+
+@media screen and (max-width: 400px) {
+  .navbar {
+    padding: 20px;
+  }
+
+  .brand-logo {
+    font-size: 1.5rem;
+  }
+
+  .auth-button {
+    font-size: 0.8rem;
+  }
 }

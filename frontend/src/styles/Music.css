@@ -78,71 +78,67 @@
   cursor: pointer;
 }
 
-.song-list{
+.song-list {
   position: absolute;
   left: 0;
-  bottom: -55%;
+  bottom: 0;
   width: 100%;
   background-color: var(--dark);
   border-radius: 1rem;
   padding: 15px 30px;
-  opacity: 0;
-  pointer-events: none;
   z-index: 1;
-  transition: all 0.14s ease-in-out;
+  display: none;
 }
 
-.song-list.show{
-  bottom: 0;
-  opacity: 1;
-  pointer-events: auto;
+.song-list.show {
+  display: block;
 }
 
-.list-header{
+.list-header {
   display: flex;
   justify-content: space-between;
 }
 
-.list-header span{
+.list-header span {
   font-size: 20px;
   padding: 5px;
 }
 
-.list-header i{
+.list-header i {
   font-size: 20px;
   padding: 5px;
   cursor: pointer;
 }
 
-.song-list ul{
+.song-list ul {
   margin: 10px 0;
   max-height: 260px;
   overflow: auto;
 }
 
-.song-list ul li{
+.song-list ul li {
   list-style: none;
   margin-bottom: 16px;
   border-bottom: 1px solid var(--green);
   cursor: pointer;
 }
 
-.online-offline{
+.online-offline {
   display: flex;
   flex-direction: column;
 }
 
-.online-offline label{
+.online-offline label {
   margin-bottom: 12px;
   cursor: pointer;
   border-bottom: 1px solid var(--green);
 }
 
-#file-select{
+#file-select {
   display: none;
 }
 
-.button-container{
+.button-container {
   width: 60px;
   height: 60px;
   background: var(--green);
@@ -154,21 +150,21 @@
   cursor: pointer;
 }
 
-.button-container.playing{
+.button-container.playing {
   animation: animate 2s linear infinite;
 }
 
-@keyframes animate{
-  0%{
+@keyframes animate {
+  0% {
     box-shadow: 0 0 0 0 rgba(0, 206, 209, 0.7);
   }
-  40%{
+  40% {
     box-shadow: 0 0 0 20px rgba(0, 206, 209, 0);
   }
-  80%{
+  80% {
     box-shadow: 0 0 0 20px rgba(0, 206, 209, 0);
   }
-  100%{
+  100% {
     box-shadow: 0 0 0 rgba(0, 206, 209, 0);
   }
 }

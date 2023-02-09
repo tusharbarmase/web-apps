@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNotesContext } from "../hooks/useNotesContext";
+import axios from "axios";
 
 //date formatting
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
@@ -20,16 +21,16 @@ const NoteDetails = ({ SetButton, SetSingleNote, setHeading, note }) => {
     if (isDeleting) return;
 
     setIsDeleting(true);
-    const response = await fetch("/api/notes/" + note._id, {
-      method: "DELETE",
-    });
-
-    const json = await response.json();
-
-    if (response.ok) {
-      dispatch({ type: "DELETE_NOTE", payload: json });
-    }
-    setIsDeleting(false);
+    axios
+      .delete("https://webapp-server.onrender.com/api/notes/" + note._id)
+      .then((response) => {
+        dispatch({ type: "DELETE_NOTE", payload: response.data });
+        setIsDeleting(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsDeleting(false);
+      });
   };
 
   return (
@@ -43,8 +44,8 @@ const NoteDetails = ({ SetButton, SetSingleNote, setHeading, note }) => {
           {formatDistanceToNow(new Date(note.createdAt), { addSuffix: true })}
         </span>
         <div className="icons">
-          <i className="fa fa-pen" onClick={handleEdit}></i>
-          <i className="fa fa-trash" onClick={handleDelete}></i>
+          <i className="fa-regular fa-pen-to-square" onClick={handleEdit}></i>
+          <i className="fa-regular fa-trash" onClick={handleDelete}></i>
         </div>
       </div>
     </li>
