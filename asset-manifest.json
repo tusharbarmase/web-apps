@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/web-apps/static/css/main.6b1bdda9.css",
+    "main.css": "/web-apps/static/css/main.8561e921.css",
     "main.js": "/web-apps/static/js/main.eb853b09.js",
     "static/media/Pirates Of The Caribbean (Remix).mp3": "/web-apps/static/media/Pirates Of The Caribbean (Remix).0efba70ff3fa5d3fc123.mp3",
     "static/media/Zelda - Lost Woods (Remix).mp3": "/web-apps/static/media/Zelda - Lost Woods (Remix).c4890aeb3a0e97e4b1ce.mp3",
@@ -11,11 +11,11 @@
     "static/media/image-4.jpg": "/web-apps/static/media/image-4.d43a4335d8b0fbf9ff7a.jpg",
     "static/media/image-1.jpg": "/web-apps/static/media/image-1.e6604fae451465758f6b.jpg",
     "index.html": "/web-apps/index.html",
-    "main.6b1bdda9.css.map": "/web-apps/static/css/main.6b1bdda9.css.map",
+    "main.8561e921.css.map": "/web-apps/static/css/main.8561e921.css.map",
     "main.eb853b09.js.map": "/web-apps/static/js/main.eb853b09.js.map"
   },
   "entrypoints": [
-    "static/css/main.6b1bdda9.css",
+    "static/css/main.8561e921.css",
     "static/js/main.eb853b09.js"
   ]
 }
