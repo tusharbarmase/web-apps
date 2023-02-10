@@ -9,9 +9,6 @@ const Home = () => {
   useEffect(() => {
     axios
       .get("https://webapp-server.onrender.com")
-      .then((response) => {
-        console.log(response.data.mssg)
-      })
       .catch((error) => {
         console.log(error);
       });
